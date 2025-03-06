@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Your Thoughts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-600 p-4 text-center">
+        <h1 class="text-white text-2xl font-bold">Share Your Thoughts</h1>
+    </nav>
+
+    <!-- Thought Sharing Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-8">Express Yourself</h2>
+            <div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-8">
+                <textarea id="thoughtInput" class="w-full p-3 border rounded-lg mb-4" placeholder="Write your thoughts here..." rows="4"></textarea>
+                <button onclick="postThought()" class="w-full px-4 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700">
+                    Share Thought
+                </button>
+            </div>
+            <div id="thoughtsContainer" class="mt-8 max-w-lg mx-auto bg-white shadow-lg p-6 rounded-lg hidden">
+                <h3 class="text-xl font-bold">Shared Thoughts</h3>
+                <ul id="thoughtList" class="text-gray-700 mt-4 list-disc list-inside"></ul>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function postThought() {
+            const thought = document.getElementById('thoughtInput').value.trim();
+            if (!thought) {
+                alert('Please write something before sharing.');
+                return;
+            }
+            
+            const thoughtList = document.getElementById('thoughtList');
+            const li = document.createElement('li');
+            li.textContent = thought;
+            thoughtList.appendChild(li);
+            
+            document.getElementById('thoughtsContainer').classList.remove('hidden');
+            document.getElementById('thoughtInput').value = '';
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white text-center py-4">
+        <p>&copy; 2025 Share Your Thoughts. All rights reserved.</p>
+    </footer>
+</body>
+</html>
